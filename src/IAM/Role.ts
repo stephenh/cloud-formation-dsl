@@ -14,5 +14,5 @@ export function AWS_IAM_Role(
   name: string,
   properties: AWS_IAM_RoleProps) {
   resources.push([name, "AWS::IAM::Role", properties])
-  return { Name: name, Ref: 'Ref', Arn: 'Arn' };
+  return { Name: name, Ref: 'Ref', Arn: 'Arn', Props: properties };
 }

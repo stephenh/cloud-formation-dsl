@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "jest": "^22.4.3",
     "ts-jest": "^22.4.2",
     "ts-node": "^6.0.2",
     "tsconfig-paths": "^3.3.1",
     "tslib": "^1.9.0",
     "typescript": "^2.8.3"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "jest": {
     "moduleFileExtensions": [
       "ts",

@@ -43,5 +43,5 @@ export function AWS_ApplicationAutoScaling_ScalingPolicy(
   name: string,
   properties: AWS_ApplicationAutoScaling_ScalingPolicyProps_DynamoTarget | AWS_ApplicationAutoScaling_ScalingPolicyProps_ScalingTarget) {
   resources.push([name, "AWS::ApplicationAutoScaling::ScalingPolicy", properties])
-  return { Name: name, Ref: 'Ref' };
+  return { Name: name, Ref: 'Ref', Props: properties };
 }
