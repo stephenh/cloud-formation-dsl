@@ -3,7 +3,7 @@
 exports[`should generate a child 1`] = `
 "key1: value1
 key2:
- child1: value1
+  child1: value1
 "
 `;
 

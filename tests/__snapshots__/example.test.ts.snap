@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should have a few resources 1`] = `
+"DynamoDBAutoScalingRole:
+  Type: AWS::IAM::Role
+  Properties:
+    AssumeRolePolicyDocument: ...
+EmployeeTableWriteCapacityScalableTarget:
+  Type: AWS::ApplicationAutoScaling::ScalableTarget
+  Properties:
+    ResourceId: table/Employee
+    MinCapacity: !Ref: DynamoMinCapacity
+    MaxCapacity: !Ref: DynamoMaxCapacity
+    RoleARN: !GetAtt: DynamoDBAutoScalingRole.Arn
+    ScalableDimension: dynamodb:table:WriteCapacityUnits
+    ServiceNamespace: dynamodb
+EmployeeTableWriteScalingPolicy:
+  Type: AWS::ApplicationAutoScaling::ScalingPolicy
+  Properties:
+    PolicyName: EmployeeTableWriteScalingPolicy
+    PolicyType: TargetTrackingScaling
+    ScalingTargetId: !Ref: EmployeeTableWriteCapacityScalableTarget
+    TargetTrackingScalingPolicyConfiguration:
+      TargetValue: !Ref: DynamoDBTableScalingThreshold
+      ScaleInCooldown: !Ref: DynamoDBScaleInOutCooldown
+      ScaleOutCooldown: !Ref: DynamoDBScaleInOutCooldown
+      PredefinedMetricSpecification:
+        PredefinedMetricType: DynamoDBWriteCapacityUtilization
+EmployeeTableReadCapacityScalableTarget:
+  Type: AWS::ApplicationAutoScaling::ScalableTarget
+  Properties:
+    ResourceId: table/Employee
+    MinCapacity: !Ref: DynamoMinCapacity
+    MaxCapacity: !Ref: DynamoMaxCapacity
+    RoleARN: !GetAtt: DynamoDBAutoScalingRole.Arn
+    ScalableDimension: dynamodb:table:ReadCapacityUnits
+    ServiceNamespace: dynamodb
+EmployeeTableReadScalingPolicy:
+  Type: AWS::ApplicationAutoScaling::ScalingPolicy
+  Properties:
+    PolicyName: EmployeeTableReadScalingPolicy
+    PolicyType: TargetTrackingScaling
+    ScalingTargetId: !Ref: EmployeeTableReadCapacityScalableTarget
+    TargetTrackingScalingPolicyConfiguration:
+      TargetValue: !Ref: DynamoDBTableScalingThreshold
+      ScaleInCooldown: !Ref: DynamoDBScaleInOutCooldown
+      ScaleOutCooldown: !Ref: DynamoDBScaleInOutCooldown
+      PredefinedMetricSpecification:
+        PredefinedMetricType: DynamoDBReadCapacityUtilization
+"
+`;

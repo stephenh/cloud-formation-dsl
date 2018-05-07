@@ -62,8 +62,3 @@ const EmployeeTableReadScalingPolicy = AWS_ApplicationAutoScaling_ScalingPolicy(
       }
     }
   });
-
-resources.forEach(resource => {
-  const [name, type, props] = resource
-  console.log(name)
-})
